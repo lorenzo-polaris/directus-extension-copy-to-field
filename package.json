@@ -1,0 +1,28 @@
+{
+  "name": "directus-extension-copy-to-field",
+  "description": "Directus extension to copy the current value of a field into another",
+  "icon": "extension",
+  "version": "1.0.0",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-interface"
+  ],
+  "type": "module",
+  "directus:extension": {
+    "type": "interface",
+    "path": "dist/directus-extension-copy-to-field/index.js",
+    "source": "src/index.ts",
+    "host": "^10.1.11"
+  },
+  "scripts": {
+    "build": "directus-extension build",
+    "dev": "directus-extension build -w --no-minify",
+    "link": "directus-extension link"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "10.1.11",
+    "typescript": "^5.4.5",
+    "vue": "^3.4.23"
+  }
+}
