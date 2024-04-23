@@ -1,5 +1,5 @@
 <template>
-  <div class="copy-to-field-wrapper">
+  <div v-if="fieldType === 'input'" class="copy-to-field-wrapper">
     <VInput
       :field="field"
       :collection="collection"
@@ -13,6 +13,25 @@
       <VIcon name="arrow_downward" />
     </div>
   </div>
+
+  <div v-else-if="fieldType === 'textarea'" class="copy-to-field-wrapper">
+    <VTextarea
+      :field="field"
+      :collection="collection"
+      :primary-key="primaryKey"
+      :model-value="inputValue"
+      @update:model-value="handleChange($event)"
+    />
+
+    <div class="icons-wrapper" @click="copyToField">
+      <VIcon name="content_copy" />
+      <VIcon name="arrow_downward" />
+    </div>
+  </div>
+
+  <div v-else>
+    <p>Field type not supported</p>
+  </div>
 </template>
 
 <script lang="ts">
@@ -25,7 +44,11 @@ export default defineComponent({
     },
     destination_field: {
       type: String,
-      default: null,
+      default: "null",
+    },
+    fieldType: {
+      type: String,
+      default: "input",
     },
     collection: {
       type: String,
@@ -65,7 +88,10 @@ export default defineComponent({
       emit("setFieldValue", { field: props.destination_field, value: inputValue });
     }
 
+    console.log(props);
+
     return {
+      fieldType: props.fieldType,
       collection: props.collection,
       primaryKey: props.primaryKey,
       field: props.field,
