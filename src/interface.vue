@@ -1,5 +1,5 @@
 <template>
-  <div v-if="fieldType === 'input'" class="copy-to-field-wrapper">
+  <div v-if="fieldType === 'input'" class="copy-to-input-wrapper">
     <VInput
       :field="field"
       :collection="collection"
@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <div v-else-if="fieldType === 'textarea'" class="copy-to-field-wrapper">
+  <div v-else-if="fieldType === 'textarea'" class="copy-to-textarea-wrapper">
     <VTextarea
       :field="field"
       :collection="collection"
@@ -26,6 +26,7 @@
     <div class="icons-wrapper" @click="copyToField">
       <VIcon name="content_copy" />
       <VIcon name="arrow_downward" />
+      <small>Copia valore nel campo sottostante</small>
     </div>
   </div>
 
@@ -105,16 +106,30 @@ export default defineComponent({
 </script>
 
 <style scoped lang="css">
-.copy-to-field-wrapper {
+.copy-to-input-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
 
-.icons-wrapper {
+.copy-to-input-wrapper .icons-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.copy-to-textarea-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.copy-to-textarea-wrapper .icons-wrapper {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   cursor: pointer;
 }
