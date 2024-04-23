@@ -6,7 +6,7 @@ export default defineInterface({
   name: "Copy to Field",
   icon: "box",
   description: "This is my custom interface!",
-  types: ["string", "integer", "float"],
+  types: ["string", "integer", "float", "text"],
   component: InterfaceComponent,
   options: [
     {
